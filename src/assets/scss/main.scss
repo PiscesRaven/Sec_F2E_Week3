@@ -1,0 +1,165 @@
+@import './mixin.scss';
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans+TC&display=swap');
+@import url(https://fonts.google.com/specimen/Oleo+Script);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+body, html {
+  width: 100%;
+  height: 100%;
+  font-family: 'Noto Sans TC' ,'Oleo Script' ,'Avenir', Helvetica, Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+          font-family: 'Noto Sans TC' ,'Oleo Script' ,'Avenir', Helvetica, Arial, sans-serif;
+}
+
+ul, li, ol {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  display: block;
+  margin: auto;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  
+}
+
+// #player {
+//   @include setPosAbs(0,0,0,0,-999);
+// }
+
+.mainContainer {
+  @include size(100%);
+  display: flex;
+  .sideMenu {
+    @include size(300px ,100%);
+    @include setBg(#1a1a1a);
+    padding: 25px 50px;
+    color: #fff;
+    li{ 
+    cursor: pointer;
+     margin: 16px auto; 
+     i {
+       vertical-align: text-bottom;
+       margin-right: 8px;
+     }
+    }
+    .title {
+      cursor: pointer;
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+  }
+  .videoContainer {
+    @include size(100%);
+    @include setBg(#2A2A2A);
+    position: relative;
+    .embed {
+      @include size(100%,480px);
+      position: relative;
+      .cover{ 
+        @include setPosAbs(0,0,0,0,99);
+        box-shadow: inset 0 0 60px 250px rgba(0, 0, 0, 0.5);
+        &::before {
+          content: '';
+          @include setBg(#000);
+          @include size(100%,60px);
+          @include setPosAbs(0,null,null,0,99);
+          position: absolute;
+          top: 0%;
+          left: 0%;
+        }
+        &::after {
+          content: '';
+          @include setBg(#000);
+          @include size(100%,65px);
+          @include setPosAbs(null,null,0,0,99);
+        }
+      }
+    }
+    .thumbnail {
+      @include size(320px,180px);
+      @include setPosAbs(325px,null,null,5%,100);
+      background-size: contain;
+      background-repeat: no-repeat;
+    }
+    .listContainer{
+      @include setAuto(80%,auto);
+      overflow-x: hidden;
+      .videoList{
+        @include size(calc(100% + 17px),300px,40px auto auto);
+        position: relative;
+        counter-reset: item;
+        overflow-y: scroll;
+      .list {
+        cursor: pointer;
+        @include size(100%,60px);
+        @include setFlex(center,center);
+        counter-increment: item;
+        color: #fff;
+        font-size: 20px;
+        transition: 0.25s;
+        &:hover,&.active {
+          background: linear-gradient(270deg, #ffa88348 0%, #3927ff2f 100%);
+        }
+        &:nth-of-type(odd) {
+          @include setBg(#222222);
+        }
+        &:before {
+          content: counter(item);
+          width: 5%;
+          color: #fff;
+          font-weight: 700;
+          text-align: center;
+          display: inline-block;
+          margin-right: 8px;
+          margin-left: -28px;
+        }
+        .name {
+
+          width: 75%;
+        }
+        .time {
+          width: 10%;
+        }
+        .methods {
+          width: 5%;
+          .material-icons {
+            vertical-align: sub;
+          }
+        }
+      }
+      }
+    }
+    .panel {
+      .timeBar {
+        @include size(calc(80% - 40px),10px,20px auto);
+        position: relative;
+        background: rgba(54, 54, 54, 0.8);
+      }
+      .panelBtn {
+        margin: auto;
+        width: 40%;
+        text-align: center;
+        .material-icons{
+          cursor: pointer;
+          color: #474747;
+          font-size: 40px;
+        }
+      }
+    }
+  }
+}
+

@@ -17,12 +17,12 @@ module.exports = {
       .use('pug-html-loader')
       .loader('pug-html-loader')
       .end()
-  }
+  },
   // css: {
   //   loaderOptions: {
   //     sass: {
   //       data: ` @import "@css/mixin.scss"; @import "@css/main.scss";`
   //     }
   //   }
-  // },
+  // }
 }

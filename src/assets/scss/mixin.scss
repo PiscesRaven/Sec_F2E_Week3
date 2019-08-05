@@ -1,0 +1,100 @@
+//========== mixin ==========
+
+@mixin size($w,$h:$w,$m:auto){
+  width: $w;
+  height: $h;
+  @if($m){
+    margin: $m;
+  }
+}
+
+@mixin setAuto($w, $m:auto){
+  width: $w;
+  margin: $m;
+}
+
+@mixin setImgBg($file, $w:null, $h:null, $size:initial, $post:center center, $repeat:no-repeat, $color:null){
+
+  background-image: url(~@img/#{$file});
+  background-repeat: $repeat;
+  background-size: $size;
+  background-position: $post;
+  @if($color){
+    @include setBg($color);
+  }
+  @if($w and $h){
+    @include size($w, $h);
+  }
+    
+}
+@mixin setBg($color){
+
+  background-color: $color;
+}
+
+@mixin setBorder($w, $c){
+  border: $w solid $c;
+}
+
+@mixin brdRad($tl, $tr:$tl, $br:$tl, $bl:$tl){
+	border-top-left-radius: $tl;
+	border-top-right-radius: $tr;
+	border-bottom-right-radius: $br;
+	border-bottom-left-radius: $bl;
+}
+
+@mixin setPosAbs($top:0, $right:0, $bottom:null, $left:0, $zindex:0){
+
+  position: absolute;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $zindex;
+}
+  
+@mixin setFlex($horizontal:space-between, $vertical:center){
+  display: flex;
+  align-items: $vertical;
+  justify-content: $horizontal;
+}
+  
+@mixin setFont($fz, $les:null, $lh:inherit, $fw:normal){
+
+  font-size: $fz;
+  letter-spacing: $les;
+  line-height: $lh;
+  font-weight: $fw;
+}
+  
+
+//電腦
+@mixin pc-width() {
+  @media all and (min-width: $pc-media) and (max-width: $pc-lgs-media) {
+    @content;
+  }
+}
+//平板
+@mixin pad-width() {
+  @media all and (min-width: $pad-media) and (max-width: $pcs-media) {
+    @content;
+  }
+}
+//平板以下
+@mixin pad-and-phone-width {
+  @media all and (max-width: $pads-media) {
+    @content;
+  }
+}
+//小平板
+@mixin small-pad-width() {
+  @media all and (min-width: $phone-media) and (max-width:$pads-media) {
+    @content;
+  }
+}
+//手機
+@mixin phone-width() {
+  @media all and (max-width: $phones-media) {
+    @content;
+  }
+}

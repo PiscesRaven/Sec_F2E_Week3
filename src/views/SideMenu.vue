@@ -1,22 +1,28 @@
-<template>
-
+<template lang='pug'>
+.sideMenu
+  .userInfo 
+  ul.menu
+    .title 首頁
+    .title 音樂庫
+  ul.methodsMenu
+    li
+      i.material-icons folder
+      | 你的歌單
+    li
+      i.material-icons search
+      | 搜尋歌曲
+    li 
+      i.material-icons music_note
+      | 熱門點播
+  ul.subMenu
+    .title 關注我們
+    li youtube
+    li fackbook
+    li line 
+    li 分享
 </template>
 <script lang='ts'>
-import { Component, Vue, Prop } from 'vue-property-decorator';
-import  from '@/components/ .vue'
-@Component({
-    components: {
-        
-    }
-})
-export default class componentName extends Vue {
-    @Prop(type)private propName = propValue;
-    private variableName: typeName = variableValue;
-    public methodName() {
-        
-    }
-}
-</script>
-<style lang='less' scoped >
+import { Vue } from "vue-property-decorator";
 
-</style>
+export default class SideMenu extends Vue {}
+</script>
